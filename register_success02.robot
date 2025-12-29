@@ -1,0 +1,24 @@
+*** Settings ***
+Library    SeleniumLibrary
+
+*** Variables ***
+${URL}    http://localhost:7272/StarterFiles/Registration.html
+
+*** Test Cases ***
+Register Success No Organization Info
+    Open Browser    ${URL}    chrome
+
+    Input Text    id=firstname    Somyod
+    Input Text    id=lastname     Sodsai
+    Input Text    id=email        somyod@kkumail.com
+    Input Text    id=phone        091-001-1234
+
+    Click Button    id=registerButton
+	Sleep    3s
+
+    Title Should Be    Success
+    Page Should Contain    Thank you for registering with us.
+    Page Should Contain    We will send a confirmation to your email soon.
+	Sleep    3s
+
+    Close Browser
